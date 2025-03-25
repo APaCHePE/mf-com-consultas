@@ -1,0 +1,21 @@
+<div class="surface-ground min-h-screen flex flex-column align-items-center justify-content-center px-4 py-6">
+  <div class="text-center mb-4">
+    <h2 class="text-900 text-2xl font-bold mb-2">Selecciona un Área</h2>
+    <p class="text-600 text-sm">Haz clic en una de las opciones para continuar</p>
+  </div>
+
+  <div class="grid w-full md:w-30rem lg:w-6 justify-content-center">
+    <div
+      *ngFor="let opcion of opciones"
+      class="col-12 sm:col-4"
+    >
+      <div
+        class="surface-card shadow-2 border-round p-4 text-center cursor-pointer hover:shadow-4 transition-all"
+        (click)="navegar(opcion.ruta)"
+      >
+        <i [class]="opcion.icon + ' text-4xl text-primary mb-3'"></i>
+        <h4 class="text-900 text-lg font-medium">{{ opcion.label }}</h4>
+      </div>
+    </div>
+  </div>
+</div>
