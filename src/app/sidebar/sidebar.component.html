@@ -1,0 +1,28 @@
+<!-- <aside class="w-64 bg-surface-100 dark:bg-surface-800 h-full shadow-md p-4">
+    <nav class="flex flex-col gap-4 text-surface-700 dark:text-white">
+      <a routerLink="/productos/dashboard" routerLinkActive="font-bold text-primary" class="hover:text-primary transition">
+        Dashboard
+      </a>
+      <a routerLink="/menu/modulo-comercial/atencion-reclamos" routerLinkActive="font-bold text-primary" class="hover:text-primary transition">
+        Atencion cliente
+      </a>
+      <a routerLink="/menu/area2" routerLinkActive="font-bold text-primary" class="hover:text-primary transition">
+        Área 2
+      </a>
+      <a routerLink="/menu/area3" routerLinkActive="font-bold text-primary" class="hover:text-primary transition">
+        Área 3
+      </a>
+    </nav>
+  </aside> -->
+
+<!-- menu/src/app/sidebar/sidebar.component.html -->
+<aside class="w-64 bg-surface-100 dark:bg-surface-800 h-full shadow-md p-4">
+  <nav class="flex flex-col gap-4 text-surface-700 dark:text-white">
+    <a *ngFor="let item of menuItems" [routerLink]="item.path" [class.font-bold]="isActive(item.path)"
+      [class.text-primary]="isActive(item.path)"
+      class="hover:text-primary transition flex items-center gap-2 p-2 rounded">
+      <span class="material-icons">{{item.icon}}</span>
+      {{item.label}}
+    </a>
+  </nav>
+</aside>

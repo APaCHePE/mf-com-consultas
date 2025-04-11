@@ -12,28 +12,25 @@ import { AppComponent } from './app/app.component';
 import { APP_BASE_HREF } from '@angular/common';
 import { EmptyRouteComponent } from './app/empty-route/empty-route.component';
 
-// import { environment } from './environments/environment';
+import { environment } from './environments/environment';
 import { singleSpaPropsSubject } from './single-spa/single-spa-props';
 import { appConfig } from './app/app.config';
 
-// if (environment.production) {
-//   enableProdMode();
-// }
+if (environment.production) {
+  enableProdMode();
+}
 
 const lifecycles = singleSpaAngular({
   bootstrapFunction: (singleSpaProps) => {
-    console.log('✅ Ejecutando bootstrapFunction', singleSpaProps);
+    
+    const el = document.getElementById('single-spa-container');
+    console.log('[MF] Mounting inside:', el);
+    // console.log('✅ Ejecutando bootstrapFunction', singleSpaProps);
     singleSpaPropsSubject.next(singleSpaProps);
     // return platformBrowserDynamic(getSingleSpaExtraProviders()).bootstrapModule(AppComponent);
-    return bootstrapApplication(AppComponent, {
-      providers: [
-        { provide: APP_BASE_HREF, useValue: '/' },
-        getSingleSpaExtraProviders(),
-        ...appConfig.providers!,
-      ],
-    });
+    return bootstrapApplication(AppComponent, appConfig );
   },
-  template: '<app-root />',
+  template: '<app-comercial />',
   Router,
   NavigationStart,
   NgZone,

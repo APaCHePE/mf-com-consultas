@@ -1,25 +1,17 @@
 import { Component } from '@angular/core';
 // import { navigateToUrl } from '@single-spa/navigation';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-menu',
+  standalone: true,
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  styleUrls: ['./menu.component.scss'],
+  imports: [ButtonModule]
 })
 export class MenuComponent {
-  title = 'menu';
   constructor(
   ) {
     console.log('✅ Ejecutando MenuComponent');
-  }
-  opciones = [
-    { label: 'Contabilidad', icon: 'pi pi-calculator', ruta: '/contabilidad' },
-    { label: 'Administración', icon: 'pi pi-briefcase', ruta: '/administracion' },
-    { label: 'Seguridad', icon: 'pi pi-shield', ruta: '/seguridad' }
-  ];
-
-  navegar(ruta: string) {
-    // window.history.pushState(null, '', ruta);
-    // dispatchEvent(new PopStateEvent('popstate'));
   }
 }

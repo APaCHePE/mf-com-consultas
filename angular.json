@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "menu": {
+    "mf-comercial": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "outputPath": "dist/menu",
+            "outputPath": "dist/mf-comercial",
             "index": "src/index.html",
             "main": "src/main.single-spa.ts",
             "polyfills": [
@@ -37,7 +37,7 @@
             "scripts": [],
             "customWebpackConfig": {
               "path": "extra-webpack.config.js",
-              "libraryName": "menu",
+              "libraryName": "mf-comercial",
               "libraryTarget": "umd"
             },
             "deployUrl": "http://localhost:1001/"
@@ -75,10 +75,10 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "menu:build:production"
+              "buildTarget": "mf-comercial:build:production"
             },
             "development": {
-              "buildTarget": "menu:build:development"
+              "buildTarget": "mf-comercial:build:development"
             }
           },
           "defaultConfiguration": "development"
