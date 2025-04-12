@@ -1,17 +1,13 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter, withHashLocation } from '@angular/router';
+import { ApplicationConfig } from '@angular/core';
+import { provideRouter } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
 import Material from '@primeng/themes/material';
 import { getSingleSpaExtraProviders } from 'single-spa-angular';
-
 import { APP_BASE_HREF } from '@angular/common';
-import { routes } from './app.routes';
-import {
-  provideClientHydration,
-  withEventReplay,
-} from '@angular/platform-browser';
 import { definePreset } from '@primeng/themes';
+
+import { routes } from './app.routes';
 
 const MyPreset = definePreset(Material, {
   // isDark: false,
@@ -37,7 +33,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     {
       provide: APP_BASE_HREF,
-      useValue: '/'
+      useValue: '/',
     },
     provideAnimationsAsync(),
     getSingleSpaExtraProviders(),

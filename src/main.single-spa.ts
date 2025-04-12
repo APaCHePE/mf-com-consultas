@@ -3,8 +3,10 @@ import { enableProdMode, NgZone } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { Router, NavigationStart, provideRouter } from '@angular/router';
 
-import { singleSpaAngular, getSingleSpaExtraProviders } from 'single-spa-angular';
-
+import {
+  singleSpaAngular,
+  getSingleSpaExtraProviders,
+} from 'single-spa-angular';
 
 // import { AppModule } from './app/app.module';
 import { bootstrapApplication } from '@angular/platform-browser';
@@ -22,13 +24,8 @@ if (environment.production) {
 
 const lifecycles = singleSpaAngular({
   bootstrapFunction: (singleSpaProps) => {
-    
-    const el = document.getElementById('single-spa-container');
-    console.log('[MF] Mounting inside:', el);
-    // console.log('✅ Ejecutando bootstrapFunction', singleSpaProps);
     singleSpaPropsSubject.next(singleSpaProps);
-    // return platformBrowserDynamic(getSingleSpaExtraProviders()).bootstrapModule(AppComponent);
-    return bootstrapApplication(AppComponent, appConfig );
+    return bootstrapApplication(AppComponent, appConfig);
   },
   template: '<app-comercial />',
   Router,

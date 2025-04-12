@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "mf-comercial": {
+    "mf-com-consultas": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "outputPath": "dist/mf-comercial",
+            "outputPath": "dist/mf-com-consultas",
             "index": "src/index.html",
             "main": "src/main.single-spa.ts",
             "polyfills": [
@@ -37,7 +37,7 @@
             "scripts": [],
             "customWebpackConfig": {
               "path": "extra-webpack.config.js",
-              "libraryName": "mf-comercial",
+              "libraryName": "mf-com-consultas",
               "libraryTarget": "umd"
             },
             "deployUrl": "http://localhost:1001/"
@@ -75,10 +75,10 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "mf-comercial:build:production"
+              "buildTarget": "mf-com-consultas:build:production"
             },
             "development": {
-              "buildTarget": "mf-comercial:build:development"
+              "buildTarget": "mf-com-consultas:build:development"
             }
           },
           "defaultConfiguration": "development"

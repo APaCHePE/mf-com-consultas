@@ -1,5 +1,5 @@
 {
-  "name": "mf-comercial",
+  "name": "mf-com-consultas",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,9 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:mf-comercial": "node dist/mf-comercial/server/server.mjs",
-    "build:single-spa:mf-comercial": "ng build mf-comercial --configuration production",
-    "serve:single-spa:mf-comercial": "ng s --project mf-comercial --disable-host-check --port 1001 --live-reload false"
+    "serve:ssr:mf-com-consultas": "node dist/mf-com-consultas/server/server.mjs",
+    "build:single-spa:mf-com-consultas": "ng build mf-com-consultas --configuration production",
+    "serve:single-spa:mf-com-consultas": "ng s --project mf-com-consultas --disable-host-check --port 1001 --live-reload false"
   },
   "private": true,
   "dependencies": {
