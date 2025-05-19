@@ -1,16 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-// import { PrimeIcons, MenuItem } from 'primeng/api';
-
 @Component({
-  selector: 'app-comercial',
+  selector: 'app-com-consultas',
   standalone: true,
   imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  template: '<router-outlet></router-outlet>',
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'mf-com-comercial';
-  ngOnInit(): void {}
 }

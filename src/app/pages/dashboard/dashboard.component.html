@@ -1,0 +1,22 @@
+<!-- dashboard.component.html -->
+<div class="grid grid-cols-1 gap-4">
+  <!-- Widget de Bienvenida -->
+  <introduce-widget></introduce-widget>
+
+  <!-- Estadísticas -->
+  <stats-widget></stats-widget>
+
+  <!-- Grilla principal -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    <!-- Gráfico de Ventas -->
+    <p-card header="Ventas Mensuales" class="lg:col-span-2">
+      <p-chart type="line" [data]="salesChartData" [options]="chartOptions"></p-chart>
+    </p-card>
+
+    <!-- Progreso de Proyectos -->
+    <project-progress-widget></project-progress-widget>
+  </div>
+
+  <!-- Actividad Reciente -->
+  <recent-activity-widget></recent-activity-widget>
+</div>

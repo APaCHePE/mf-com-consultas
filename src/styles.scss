@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-@use './tailwind.css';
-@use './assets/ultima/layout.scss';
-@use 'primeicons/primeicons.css';
+// @use './tailwind.css';
+// @use './assets/ultima/layout.scss';
+// @use 'primeicons/primeicons.css';
+@import './tailwind.css';
+@import './assets/ultima/layout.scss';
+@import "primeicons/primeicons.css";

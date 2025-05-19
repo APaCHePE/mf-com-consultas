@@ -9,7 +9,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { TagModule } from 'primeng/tag';
 import { IntroduceWidget } from './components/introducewidget';
 import { StatsWidget } from './components/statswidget';
-import { ProjectProgressWidget } from './components/ProjectProgressWidget';
+import { ProjectProgressWidget } from './components/projectprogresswidget';
 import { RecentActivityWidget } from './components/recentactivitywidget';
 
 @Component({

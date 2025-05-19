@@ -1,11 +1,13 @@
 import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
 import Material from '@primeng/themes/material';
 import { getSingleSpaExtraProviders } from 'single-spa-angular';
 import { APP_BASE_HREF } from '@angular/common';
 import { definePreset } from '@primeng/themes';
+import { MessageService } from 'primeng/api';
 
 import { routes } from './app.routes';
 
@@ -35,13 +37,14 @@ export const appConfig: ApplicationConfig = {
       provide: APP_BASE_HREF,
       useValue: '/',
     },
-    provideAnimationsAsync(),
+    MessageService,
     getSingleSpaExtraProviders(),
     providePrimeNG({
       ripple: true,
       inputStyle: 'filled',
       theme: { preset: MyPreset, options: { darkModeSelector: '.app-dark' } },
     }),
+    provideAnimations(),
   ],
 };
 // , options: { darkModeSelector: '.app-dark' }

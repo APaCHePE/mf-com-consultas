@@ -3,31 +3,32 @@ import { LayoutComponent } from './layout/layout.component';
 import { EmptyRouteComponent } from './empty-route/empty-route.component';
 
 export const routes: Routes = [
-  // {
-  //   path: 'comercial/consultas/dashboard',
-  //   loadComponent: () => import('./prueba/prueba.component'),
-  // },
   {
     path: '',
     component: LayoutComponent,
     children: [
       {
         path: 'comercial/consultas/dashboard',
-        loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent),
+        loadComponent: () =>
+          import('./pages/dashboard/dashboard.component').then(
+            (m) => m.DashboardComponent
+          ),
       },
       {
         path: 'comercial/consultas/nuevo',
-        loadComponent: () => import('./nuevo/nuevo.component').then(m => m.NuevoComponent),
+        loadComponent: () =>
+          import('./pages/nuevo/nuevo.component').then((m) => m.NuevoComponent),
       },
       {
         path: 'comercial/consultas/modificar',
-        loadComponent: () => import('./menu/menu.component').then(m => m.MenuComponent),
+        loadComponent: () =>
+          import('./pages/menu/menu.component').then((m) => m.MenuComponent),
       },
       // {
       //   path: 'comercial/configurar',
       //   loadComponent: () => import('.//configurar.component').then(m => m.ConfigurarComponent),
       // },
-    ]
+    ],
   },
   // {
   //   path: 'productos/modificar',
