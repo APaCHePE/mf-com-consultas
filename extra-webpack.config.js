@@ -7,7 +7,7 @@ module.exports = (config, options) => {
     return merge(singleSpaWebpackConfig, {
       externals: {
         '@codenv/auth-utility': '@codenv/auth-utility',
-        '@prisma/mf-shared-ui': '@prisma/mf-shared-ui',
+        '@test/mf-utils-modules': '@test/mf-utils-modules',
       }
     });
 };
