@@ -10,6 +10,7 @@
     "src/main.single-spa.ts"
   ],
   "include": [
-    "src/**/*.d.ts"
+    "src/**/*.d.ts",
+    "src/types/extramodule.d.ts"
   ]
 }

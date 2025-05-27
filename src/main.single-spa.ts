@@ -8,10 +8,13 @@ import { singleSpaPropsSubject } from './single-spa/single-spa-props';
 import { environment } from './environments/environment';
 import { AppComponent } from './app/app.component';
 import { appConfig } from './app/app.config';
+import { setPublicPath } from 'systemjs-webpack-interop';
 
 if (environment.production) {
   enableProdMode();
 }
+
+setPublicPath('mf-com-consultas');
 
 const lifecycles = singleSpaAngular({
   bootstrapFunction: (singleSpaProps) => {
