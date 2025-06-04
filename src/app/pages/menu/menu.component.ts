@@ -95,9 +95,9 @@ export class MenuComponent {
   visibility = layoutOptionFlags;
 
   // 3. Propiedades derivadas
+  isDarkTheme = computed(() => getLayoutConfig().darkTheme);
   selectedPrimaryColor = computed(() => getLayoutConfig().primary);
   selectedSurface = () => getLayoutConfig().surface;
-  isDarkTheme = computed(() => getLayoutConfig().darkTheme);
   primaryColors = computed<SurfacesType[]>(() => {
     const presetPalette = Material.primitive;
     const colors = [
@@ -174,6 +174,14 @@ export class MenuComponent {
   }
 
   // 5. Métodos
+
+  applyTheme(type: string, color: any) {
+    if (type === 'primary') {
+      updatePreset(this.getPresetExt());
+    } else if (type === 'surface') {
+      applySurfacePalette(color.palette);
+    }
+  }
   onLayoutThemeChange(theme: string) {
     updateLayoutConfig({ layoutTheme: theme });
   }
@@ -283,14 +291,6 @@ export class MenuComponent {
     this.zone.run(() => this.cd.detectChanges());
     window.dispatchEvent(new CustomEvent('layout-updated'));
     event.stopPropagation();
-  }
-
-  applyTheme(type: string, color: any) {
-    if (type === 'primary') {
-      updatePreset(this.getPresetExt());
-    } else if (type === 'surface') {
-      applySurfacePalette(color.palette);
-    }
   }
 
   changeMenuTheme(theme: string) {
