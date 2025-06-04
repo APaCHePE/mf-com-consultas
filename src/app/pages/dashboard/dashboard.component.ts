@@ -14,12 +14,14 @@ import { CardModule } from 'primeng/card';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { TagModule } from 'primeng/tag';
 import { IntroduceWidget } from './components/introducewidget';
-import { StatsWidget } from './components/statswidget';
-import { ProjectProgressWidget } from './components/projectprogresswidget';
+// import { StatsWidget } from './components/statswidget';
+import { ProjectOverviewWidget } from './components/projectoverviewwidget';
 import { RecentActivityWidget } from './components/recentactivitywidget';
 // import { isSidebarMenuItemsVisible } from '@codenv/auth-utility';
 // import { SharedButtonComponent } from '@prisma/mf-shared-ui';
 import { isSidebarMenuItemsVisible } from '@test/mf-utils-modules';
+import { UpgradeWidget } from './components/upgradewidget';
+import { MyWorkspaceWidget } from './components/myworkspacewidget';
 
 @Component({
   selector: 'app-dashboard',
@@ -33,9 +35,10 @@ import { isSidebarMenuItemsVisible } from '@test/mf-utils-modules';
     ProgressBarModule,
     TagModule,
     IntroduceWidget,
-    StatsWidget,
-    ProjectProgressWidget,
+    UpgradeWidget,
+    ProjectOverviewWidget,
     RecentActivityWidget,
+    MyWorkspaceWidget,
   ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],

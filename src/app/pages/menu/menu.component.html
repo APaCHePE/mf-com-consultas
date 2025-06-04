@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-4">
   <div>
-    <span class="text-lg font-semibold">Primary</span>
+    <span class="text-lg font-semibold" *ngIf="visibility.enablePrimaryColor">Primary</span>
     <div class="pt-2 flex gap-2 flex-wrap">
       @for (primaryColor of primaryColors(); track primaryColor.name) {
       <button type="button" [title]="primaryColor.name" (click)="updateColors($event, 'primary', primaryColor)"
@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <div>
+  <div *ngIf="visibility.enableSurface">
     <span class="text-lg font-semibold">Surface</span>
     <div class="pt-2 flex gap-2 flex-wrap">
       @for (surface of surfaces; track surface.name) {
@@ -30,79 +30,35 @@
     </div>
   </div>
 
-  <!-- 'Color Scheme' Section -->
-  <div class="flex flex-col gap-2">
+  <div class="flex flex-col gap-2" *ngIf="visibility.enableColorScheme">
     <span class="text-lg font-semibold">Color Scheme</span>
     <p-selectbutton [(ngModel)]="darkTheme" [options]="themeOptions" optionLabel="name" optionValue="value"
       [allowEmpty]="false"></p-selectbutton>
   </div>
 
-  <ng-container *ngIf="!simple">
+  <ng-container *ngIf="visibility.enableMenuMode && !simple">
     <div class="flex flex-col gap-2">
       <span class="text-lg font-semibold">Menu Type</span>
       <div class="flex flex-wrap flex-col gap-3">
-        <div class="flex">
-          <div class="flex items-center gap-2 w-1/2">
-            <p-radio-button name="menuMode" value="static" [(ngModel)]="menuMode"></p-radio-button>
-            <label for="static">Static</label>
+        <ng-container *ngFor="let row of menuModes | slice:0:menuModes.length; let i = index">
+          <div class="flex" *ngIf="i % 2 === 0">
+            <div class="flex items-center gap-2 w-1/2" *ngIf="menuModes[i]">
+              <p-radio-button name="menuMode" [value]="menuModes[i].value" [(ngModel)]="menuMode"
+                [inputId]="menuModes[i].value"></p-radio-button>
+              <label [for]="menuModes[i].value">{{ menuModes[i].label }}</label>
+            </div>
+            <div class="flex items-center gap-2 w-1/2" *ngIf="menuModes[i + 1]">
+              <p-radio-button name="menuMode" [value]="menuModes[i + 1].value" [(ngModel)]="menuMode"
+                [inputId]="menuModes[i + 1].value"></p-radio-button>
+              <label [for]="menuModes[i + 1].value">{{ menuModes[i + 1].label }}</label>
+            </div>
           </div>
-
-          <div class="flex items-center gap-2 w-1/2">
-            <p-radio-button name="menuMode" value="overlay" [(ngModel)]="menuMode"></p-radio-button>
-            <label for="overlay">Overlay</label>
-          </div>
-        </div>
-        <div class="flex">
-          <div class="flex items-center gap-2 w-1/2">
-            <p-radio-button name="menuMode" value="slim" [(ngModel)]="menuMode"></p-radio-button>
-            <label for="slim">Slim</label>
-          </div>
-          <div class="flex items-center gap-2 w-1/2">
-            <p-radio-button name="menuMode" value="slim-plus" [(ngModel)]="menuMode" inputId="slim-plus">
-            </p-radio-button>
-            <label for="slim-plus">Slim+</label>
-          </div>
-        </div>
-        <div class="flex">
-          <div class="flex items-center gap-2 w-1/2">
-            <p-radio-button name="menuMode" value="reveal" [(ngModel)]="menuMode"></p-radio-button>
-            <label for="reveal">Reveal</label>
-          </div>
-          <div class="flex items-center gap-2 w-1/2">
-            <p-radio-button name="menuMode" value="drawer" [(ngModel)]="menuMode" inputId="drawer"></p-radio-button>
-            <label for="drawer">Drawer</label>
-          </div>
-        </div>
-        <div class="flex">
-          <div class="flex items-center gap-2 w-1/2">
-            <p-radio-button name="menuMode" value="horizontal" [(ngModel)]="menuMode"></p-radio-button>
-            <label for="horizontal">Horizontal</label>
-          </div>
-        </div>
+        </ng-container>
       </div>
     </div>
-
-    <div class="flex flex-col gap-2">
-      <span class="text-lg font-semibold">Menu Profile</span>
-      <div class="flex flex-wrap flex-col gap-3">
-        <div class="flex">
-          <div class="flex items-center gap-2 w-1/2">
-            <p-radio-button name="menuProfilePosition" value="start" [(ngModel)]="menuProfilePosition">
-            </p-radio-button>
-            <label for="start">Start</label>
-          </div>
-
-          <div class="flex items-center gap-2 w-1/2">
-            <p-radio-button name="menuProfilePosition" value="end" [(ngModel)]="menuProfilePosition"></p-radio-button>
-            <label for="end">End</label>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-2" *ngIf="visibility.enableMenuTheme">
       <span class="text-lg font-semibold">Menu Themes</span>
-      <p *ngIf="isDarkTheme(); else menu_theme_selector">Menu themes are only available in light mode by design as
+      <p *ngIf="isDark; else menu_theme_selector">Menu themes are only available in light mode by design as
         large surfaces can emit too much brightness in dark mode.</p>
       <ng-template #menu_theme_selector>
         <div class="pt-2 flex gap-2 flex-wrap">
@@ -118,7 +74,7 @@
       </ng-template>
     </div>
 
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-2" *ngIf="visibility.enableTopbarTheme">
       <span class="text-lg font-semibold">Topbar Themes</span>
       <div class="pt-2 flex gap-2 flex-wrap">
         @for (theme of topbarThemes; track theme) {
